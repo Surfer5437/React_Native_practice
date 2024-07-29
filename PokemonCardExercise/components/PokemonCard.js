@@ -14,18 +14,12 @@ const getTypeDetails = (type) => {
             return { borderColor: "#A0A0A0", emoji: "❓" }
 
     }
-}
+};
 
 
-export default function PokemonCard({
-    name,
-    image,
-    type,
-    hp,
-    moves,
-    weaknesses
-}) {
+export default function PokemonCard({ name, image, type, hp, moves, weaknesses }) {
 
+    const { borderColor, emoji } = getTypeDetails(type);
     return (
         <View style={styles.card}>
             <View style={styles.nameContainer}>
@@ -38,16 +32,19 @@ export default function PokemonCard({
                 resizeMode='contain'
                 accessibilityLabel={`${name} pokemon`} />
 
-            <View>
-                <Text>{type}</Text>
+            <View style={styles.typeContainer}>
+                <View style={[styles.badge, { borderColor }]}>
+                    <Text style={styles.typeEmoji}>{emoji}</Text>
+                    <Text style={styles.typeText}>{type}</Text>
+                </View>
             </View>
 
-            <View>
-                <Text>Moves:{moves.join(",")}</Text>
+            <View style={styles.moves}>
+                <Text style={styles.movesText}>Moves:{moves.join(",")}</Text>
             </View>
 
-            <View>
-                <Text>Weaknesses:{weaknesses.join(",")}</Text>
+            <View style={styles.weaknessContatiner}>
+                <Text style={styles.weaknessText}>Weaknesses:{weaknesses.join(",")}</Text>
             </View>
 
 
@@ -90,5 +87,40 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 200,
         marginBottom: 16,
+    },
+    typeContainer: {
+        alignItems: "center",
+        marginBottom: 40
+    },
+    badge: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingVertical: 6,
+        paddingHorizontal: 12,
+        borderRadius: 20,
+        borderWidth: 4
+    },
+    typeEmoji: {
+        fontSize: 30,
+        marginRight: 12
+    },
+    typeText: {
+        fontSize: 22,
+        fontWeight: "bold"
+    },
+    movesContainer: {
+        marginBottom: 16,
+    },
+    movesText: {
+        fontSize: 22,
+        fontWeight: "bold"
+    },
+    weaknessContatiner: {
+        marginBottom: 8,
+    },
+    weaknessText: {
+        fontSize: 22,
+        fontWeight: "bold"
     }
+
 })
