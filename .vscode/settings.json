@@ -1,3 +1,6 @@
 {
-    "avdmanager.sdkManager": ":\\Program Files (x86)\\Android\\android-sdk\\cmdline-tools\\7.0\\bin\\sdkmanager.bat"
+    "avdmanager.sdkManager": ":\\Program Files (x86)\\Android\\android-sdk\\cmdline-tools\\7.0\\bin\\sdkmanager.bat",
+    "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true,
+    "files.autoSaveDelay": 5000
 }
